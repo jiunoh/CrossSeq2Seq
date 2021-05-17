@@ -6,10 +6,9 @@ This code is based on the Tensorflow Model Garden 2.3.0 implementation (https://
 
 ## Data
 
-For pre-training, we use the En, De corpora from WMT14 En-De, the It corpus form Paracrawl En-It, the Ro corpus from Paracrawl En-Ro.
-For fine-tuning, we use IWSLT14 En-de, En-Ro, En-It, and IWSLT17 It-Ro.
+For pre-training, we use the En, De corpora from WMT14 En-De, the It corpus form Paracrawl En-It, the Ro corpus from Paracrawl En-Ro. Noised data for pre-training is created by ```data/create_pretraining_data.py```. The token dropping method is based on the BERT whole-word masking implementation (https://github.com/google-research/bert/blob/master/create_pretraining_data.py). We provide our pre-trained weights and vocabularies.
 
-Our preprocessing script is adapted from the Fairseq example. 
+For fine-tuning, we use IWSLT14 En-de, En-Ro, En-It, and IWSLT17 It-Ro. Our preprocessing script is adapted from the Fairseq example. 
 
 IWSLT14 from https://github.com/pytorch/fairseq/blob/master/examples/translation/prepare-iwslt14.sh
 
@@ -28,9 +27,9 @@ We use the same code for both pre-training and fine-tuning except for one variab
 
 The pre-training script is:
 ```
-python search_transformer_main.py --data_dir=$DATA_DIR --model_dir=$MODLE_DIR \
-    --vocab_file=$VOCAB_FILE  --param_set=base --train_steps=3000000 \
-    --steps_between_evals=20000 --max_length=256 --batch_size=4096 --num_gpus=1  --enable_tensorboard=true
+python cross_transformer_main.py --data_dir=$DATA_DIR --model_dir=$MODLE_DIR \
+    --vocab_file=$VOCAB_FILE  --param_set=base --train_steps=3000000 --steps_between_evals=20000 \
+    --max_length=256 --batch_size=4096 --num_gpus=1  --enable_tensorboard=true
 ```
 
 The fine-tuning script is:
