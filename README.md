@@ -6,7 +6,7 @@ This code is based on the Tensorflow Model Garden 2.3.0 implementation (https://
 
 ## Data
 
-For pre-training, we use the En, De corpora from WMT17 En-De, the It corpus form Paracrawl En-It, the Ro corpus from Paracrawl En-Ro. Noised data for pre-training is created by ```data/create_pretraining_data.py```. The token dropping method is based on the BERT whole-word masking implementation (https://github.com/google-research/bert/blob/master/create_pretraining_data.py). We provide our pre-trained weights and vocabularies.
+For pre-training, we use the En, De corpora from WMT17 En-De, the It corpus form Paracrawl En-It, the Ro corpus from Paracrawl En-Ro. Noised data for pre-training is created by ```create_pretraining_data.py```. The ```drop_sequence()``` method is based on the BERT whole-word masking implementation (https://github.com/google-research/bert/blob/master/create_pretraining_data.py). We provide our pre-trained weights and vocabularies.
 
 For fine-tuning, we use IWSLT14 En-de, En-Ro, En-It, and IWSLT17 It-Ro. Our preprocessing script is adapted from the Fairseq example.
 
