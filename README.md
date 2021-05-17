@@ -6,13 +6,15 @@ This code is based on the Tensorflow Model Garden 2.3.0 implementation (https://
 
 ## Data
 
-For pre-training, we use the En, De corpora from WMT14 En-De, the It corpus form Paracrawl En-It, the Ro corpus from Paracrawl En-Ro. Noised data for pre-training is created by ```data/create_pretraining_data.py```. The token dropping method is based on the BERT whole-word masking implementation (https://github.com/google-research/bert/blob/master/create_pretraining_data.py). We provide our pre-trained weights and vocabularies.
+For pre-training, we use the En, De corpora from WMT17 En-De, the It corpus form Paracrawl En-It, the Ro corpus from Paracrawl En-Ro. Noised data for pre-training is created by ```data/create_pretraining_data.py```. The token dropping method is based on the BERT whole-word masking implementation (https://github.com/google-research/bert/blob/master/create_pretraining_data.py). We provide our pre-trained weights and vocabularies.
 
-For fine-tuning, we use IWSLT14 En-de, En-Ro, En-It, and IWSLT17 It-Ro. Our preprocessing script is adapted from the Fairseq example. 
+For fine-tuning, we use IWSLT14 En-de, En-Ro, En-It, and IWSLT17 It-Ro. Our preprocessing script is adapted from the Fairseq example.
 
 IWSLT14 from https://github.com/pytorch/fairseq/blob/master/examples/translation/prepare-iwslt14.sh
 
 IWSLT17 from https://github.com/pytorch/fairseq/blob/master/examples/translation/prepare-iwslt17-multilingual.sh
+
+Paired data for fine-tuning is created by ```create_finetuning_data.py.```
 
 
 ## Model & configuration
@@ -23,7 +25,7 @@ For pre-training, we use the same training schedule that the library proposes: w
 For fine-tuning, we use warmup steps=1600, initial learning rate=0.5.
 We use beam search for decoding with beam size=4 and alpha=0.6.
 
-We use the same code for both pre-training and fine-tuning except for one variable ```has_feature_layer```. It is set False when doing pre-training or not including the intermediate layer for fine-tuning, and set True in other cases.
+We use the same code for both pre-training and fine-tuning except for ```checkpoint restore``` part and the variable ```has_feature_layer```. It is set False when doing pre-training or not including the intermediate layer for fine-tuning, and set True in other cases.
 
 The pre-training script is:
 ```
