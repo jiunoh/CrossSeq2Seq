@@ -54,7 +54,6 @@ _TRAIN_DATA_MIN_COUNT = 6
 # Vocabulary constants
 _TARGET_VOCAB_SIZE = 32768  # Number of subtokens in the vocabulary list.
 _TARGET_THRESHOLD = 327  # Accept vocabulary if size is within this threshold
-VOCAB_FILE = "vocab.en_wmt14.10000"
 
 # Strings to inclue in the generated files.
 _PREFIX = "pretrain_EN"
@@ -264,6 +263,7 @@ def main(unused_argv):
   train_en = FLAGS.data_dir+'/EN_TRAIN_CORPUS_NAME'
   val_en = FLAGS.data_dir+'/EN_VAL_CORPUS_NAME'
 
+  VOCAB_FILE = "VOCAB_NAME"  
   vocab_file = os.path.join(FLAGS.data_dir, VOCAB_FILE)
   subtokenizer = tokenizer.Subtokenizer.init_from_files(
       vocab_file, [train_en], _TARGET_VOCAB_SIZE, _TARGET_THRESHOLD,
