@@ -27,6 +27,10 @@ We use the same code for both pre-training and fine-tuning except for one variab
 
 The pre-training script is:
 ```
+export PYTHONPATH="$PYTHONPATH:/path/to/models"
+
+cd /path/to/models/official/nlp/transformer
+
 python cross_transformer_main.py --data_dir=$DATA_DIR --model_dir=$MODLE_DIR \
     --vocab_file=$VOCAB_FILE  --param_set=base --train_steps=3000000 --steps_between_evals=20000 \
     --max_length=256 --batch_size=4096 --num_gpus=1  --enable_tensorboard=true
