@@ -1,6 +1,6 @@
 # CrossSeq2Seq
 
-This repository contains the code from our paper "Reusing Monolingual Pre-trained Models By Cross-connecting Two Seq2seq For Machine Translation".
+This repository contains the code from our paper "Reusing Monolingual Pre-trained Models By Cross-connecting Seq2seq For Machine Translation".
 This code is based on the Tensorflow Model Garden 2.3.0 implementation (https://github.com/tensorflow/models/tree/master/official/nlp/transformer).
 
 
